@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+  <div class="bg-light col-md-6 my-4 rounded">
+    <form #form ="ngForm" (ngSubmit) ="onSubmit(form)">
+      <div class="form-group">
+        <label > Employee ID:</label>
+        <input type="text" class="form-control" placeholder="Enter Id" name="id" required ngModel #id="ngModel" pattern="^[0-9]+$" autocomplete="off">
+        <span *ngIf ="id.invalid && (id.dirty || id.touched)">
+          <p *ngIf="id.errors?.required">Id is required.</p>
+          <p *ngIf="id.errors?.pattern">Id must be a number.</p>
+        </span>
+      </div>
+      <div class="form-group">
+        <label >Employee Name:</label>
+        <input type="text" class="form-control" placeholder="Enter Name" name="employee_name" required ngModel #name="ngModel" autocomplete="off">
+        <span *ngIf ="name.invalid && (name.dirty || name.touched)">
+          <p *ngIf="name.errors?.required">Name is required.</p>
+        </span>
+      </div>
+      <div class="form-group">
+        <label >Employee Age:</label>
+        <input type="text" class="form-control" placeholder="Enter age" name="employee_age" required ngModel #age="ngModel" pattern="^[0-9]+$" autocomplete="off">
+        <span *ngIf ="age.invalid && (age.dirty || age.touched)">
+          <p *ngIf="age.errors?.required">Age is required.</p>
+          <p *ngIf="age.errors?.pattern">Age must be a number.</p>
+        </span>
+      </div>
+      <div class="form-group">
+        <label >Employee salary:</label>
+        <input type="text" class="form-control" placeholder="Enter salary" name="employee_salary" required ngModel #salary="ngModel" pattern="^[0-9]+$" autocomplete="off">
+        <span *ngIf ="salary.invalid && (salary.dirty || salary.touched)">
+          <p *ngIf="salary.errors?.required">Salary is required.</p>
+          <p *ngIf="salary.errors?.pattern">Salary must be a number.</p>
+        </span>
+      </div>
+      <button type="submit" class="btn btn-primary my-4" [disabled]="form.invalid">{{isEditable?'Update':'Submit'}}</button>
+    </form>
+    <div *ngIf="message"class="alert alert-success  my-3 text-center">
+      <strong>{{message}}</strong>
+    </div>
+  </div>
+</div>

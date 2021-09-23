@@ -1,0 +1,57 @@
+<div class="row justify-content-start">
+  <div class="form-group m-2">
+    <input type="text"   class="form-control" placeholder="Search by name" (input)="onSearch($event)">
+  </div>
+  <div class="form-group m-2">
+    <select class="form-control" (change)="onFilterRangeChange($event)">
+      <option value="Greater Than">Greater Than</option>
+      <option value="Equals To">Equals To</option>
+      <option value="Less Than">Less Than</option>
+    </select>
+  </div>
+  <div class="form-group m-2">
+    <input type="text"   class="form-control" placeholder="Filter By salary" (input)="onFilterSalary($event)">
+  </div>
+  <div class="form-group m-2">
+    <input type="text"   class="form-control" placeholder="Filter By age" (input)="onFilterAge($event)">
+  </div>
+  <div class="form-group m-2">
+    <input type="date"   class="form-control" placeholder="Filter By Creation" (change)="onChangeCreatedAt($event)">
+  </div>
+  <div class="col-md-10">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col" (click)="onSort('employee_name')">Employee Name <i class="fa fa-sort"></i></th>
+          <th scope="col" (click)="onSort('employee_age')">Employee Age<i class="fa fa-sort"></i></th>
+          <th scope="col" (click)="onSort('createdAt')">Created At<i class="fa fa-sort"></i></th>
+          <th scope="col" (click)="onSort('employee_salary')">Employee Salary<i class="fa fa-sort"></i></th>
+          <th scope="col">Action</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of empListArray| orderBy: key: reverse | paginate: { itemsPerPage: 30, currentPage: p } ;let i = index">
+          <th scope="row">{{i+1}}</th>
+            <td >{{emp.employee_name}}</td>
+            <td >{{emp.employee_age}}</td>
+            <td >{{emp.createdAt | date }}</td>
+            <td >{{emp.employee_salary | currency : 'INR'}}</td>
+          <td>
+              <button *ngIf="emp?.id" routerLink ="/employee/{{emp.id}}" class=" mx-2 btn btn-success btn-sm">Details</button>
+              <button class="btn btn-dark btn-sm"  routerLink ="/employee-update/{{emp.id}}">Edit</button>
+              <button class=" mx-2 btn btn-danger btn-sm"  (click) ="onDeleteEmployee(emp.id)">Delete</button>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <div class="float-right">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+
+ 

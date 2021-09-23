@@ -12,9 +12,9 @@
   <div class="form-group m-2">
     <input type="text"   class="form-control" placeholder="Filter By salary" (input)="onFilterSalary($event)">
   </div>
-  <div class="form-group m-2">
+  <!-- <div class="form-group m-2">
     <input type="text"   class="form-control" placeholder="Filter By age" (input)="onFilterAge($event)">
-  </div>
+  </div> -->
   <div class="form-group m-2">
     <input type="date"   class="form-control" placeholder="Filter By Creation" (change)="onChangeCreatedAt($event)">
   </div>
@@ -23,7 +23,7 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col" (click)="onSort('employee_name')">Employee Name <i class="fa fa-sort"></i></th>
+          <th scope="col" (click)="onSort('employee_name')">Employee Name Divesh<i class="fa fa-sort"></i></th>
           <th scope="col" (click)="onSort('employee_age')">Employee Age<i class="fa fa-sort"></i></th>
           <th scope="col" (click)="onSort('createdAt')">Created At<i class="fa fa-sort"></i></th>
           <th scope="col" (click)="onSort('employee_salary')">Employee Salary<i class="fa fa-sort"></i></th>
@@ -55,3 +55,14 @@
 
 
  
+
+
+  ****IN fix branch********************************
+  <!-- <ng-container *ngIf="expression; then thenTemplate; else elseTemplate"></ng-container>
+  <ng-template #thenTemplate>
+    
+  </ng-template>
+  <ng-template #elseTemplate>
+    
+  </ng-template> -->
+  
